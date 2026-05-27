@@ -1,5 +1,5 @@
 from feature2 import nappalaiesemenyesely
-def ensure_state(state): #AI használtam itt
+def ensure_state(state):
     defaults = {
         "wood": 0,
         "stone": 0,
@@ -16,7 +16,7 @@ def ensure_state(state): #AI használtam itt
     for k, v in defaults.items():
         state.setdefault(k, v)
 
-def test_event_never_crashes(): #AI használtam itt
+def test_event_never_crashes():
     state = {"wood": 5, "stone": 5, "food": 5}
     nappalaiesemenyesely(state)
     assert isinstance(state, dict)
