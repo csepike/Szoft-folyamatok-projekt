@@ -13,7 +13,7 @@ DAY_EVENTS = [
 
 #Elvárás, hogy legalább 6 különböző esemény legyen, és ezek közül naponta legfeljebb 1 történjen meg. done
 def nappalaiesemenyesely(state):
-    if random.random() < 0.7: #Ai-t használtam itt
+    if random.random() < 0.7:
         return
     event = random.choice(DAY_EVENTS)
     nappalaiesemeny(state, event)
