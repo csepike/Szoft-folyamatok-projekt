@@ -19,10 +19,15 @@ A játék elején három szint közül lehet választani: könnyű, közepes, ne
 
 	Könnyű	Közepes	Nehéz
 Támadás erőssége	×0,8	×1,1	×1,4
+
 Gyűjtés hatékonysága	×1,2	×1,0	×0,7
+
 Kezdő életerő (játékos / torony)	25 / 25	20 / 22	16 / 18
+
 Kezdő fa és kő	7 és 7	4 és 4	2 és 2
+
 Kezdő étel	6	4	2
+
 Egyszer használatos eszközök	több	kevesebb	nincs
 2. Véletlenszerű nappali események (feature2.py)
 
