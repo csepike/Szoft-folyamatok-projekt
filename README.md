@@ -1,68 +1,64 @@
-A Határtorony 10 éjszakája
+# The 10 Nights of the Border Tower
 
-Konzolos tower defense / túlélőjáték Pythonban. A játékos 10 napon és éjszakán át védi a határtornyot: nappal erőforrásokat gyűjt és fejleszt, éjszaka pedig különböző támadásokat kell kivédenie.
+A console-based tower defence / survival game written in Python. Over 10 days and nights the player defends a border tower: by day they gather resources and prepare, by night they have to withstand different kinds of attacks.
 
-Egyetemi projekt a Szoftverfolyamatok tárgy keretében (Szegedi Tudományegyetem, programtervező informatikus BSc).
+University project for the *Software Processes* course (University of Szeged, BSc in Computer Science).
 
-Mit tud a játék?
-10 nap, 10 éjszaka. Ha a játékos életereje vagy a torony élete elfogy, a játék véget ér. Aki túléli a 10. éjszakát, nyer.
-Nappali szakasz: naponta 2 akció – fa, kő, étel és gyógynövény gyűjtése, torony javítása, csapdák és barikádok építése, főzetek készítése, pihenés, felderítés.
-Éjszakai szakasz: eszköz használata (jelzőkürt, főzet), majd harci állás választása. A támadások három típusa: vadállatok, fosztogatók és ostrom.
-Fejlesztések: minden éjszaka után választható egy fejlesztés véletlenszerűen felkínált lehetőségek közül.
-Az általam készített részek
+## Game overview
 
-A projekt alapjátékát a tárgy keretében választottam ki. Az alábbi két funkciót és a hozzájuk tartozó teszteket én készítettem el, egyedül.
+- **10 days, 10 nights.** The game ends if the player's HP or the tower's HP reaches zero. Surviving the 10th night wins the game.
+- **Day phase:** 2 actions per day – gather wood, stone, food and herbs, repair the tower, build traps and barricades, brew potions, rest or scout.
+- **Night phase:** use a tool (signal horn, potion), then choose a combat stance. There are three attack types: beasts, raiders and sieges.
+- **Upgrades:** after each night the player picks one upgrade from a randomly offered selection.
 
-1. Nehézségi szintek (feature1.py)
+## My contribution
 
-A játék elején három szint közül lehet választani: könnyű, közepes, nehéz. A választás beállítja a kezdőértékeket és a szorzókat:
+The base game was chosen as part of the course. I implemented the two features below and their tests on my own.
 
-	Könnyű	Közepes	Nehéz
-Támadás erőssége	×0,8	×1,1	×1,4
+### 1. Difficulty levels (`feature1.py`)
 
-Gyűjtés hatékonysága	×1,2	×1,0	×0,7
+At the start of the game the player chooses one of three levels: **easy, medium or hard**. The choice sets the starting values and multipliers:
 
-Kezdő életerő (játékos / torony)	25 / 25	20 / 22	16 / 18
+| | Easy | Medium | Hard |
+|---|---|---|---|
+| Attack strength | ×0.8 | ×1.1 | ×1.4 |
+| Gathering efficiency | ×1.2 | ×1.0 | ×0.7 |
+| Starting HP (player / tower) | 25 / 25 | 20 / 22 | 16 / 18 |
+| Starting wood and stone | 7-7 | 4-4 | 2-2 |
+| Starting food | 6 | 4 | 2 |
+| Single-use items | more | fewer | none |
 
-Kezdő fa és kő	7 	4 	2 
+### 2. Random daytime events (`feature2.py`)
 
-Kezdő étel	6	4	2
+At the start of each day there is a 30% chance that something happens, with at most one event per day. There are six different events:
 
-Egyszer használatos eszközök	több	kevesebb	nincs
-2. Véletlenszerű nappali események (feature2.py)
+- finding abandoned supplies,
+- a guard gets injured (HP decreases),
+- a storm (gathering efficiency drops),
+- spoiled food,
+- a traveller arrives (defence bonus for the next night),
+- a scout party returns (HP increases, food decreases, defence bonus).
 
-Minden nap elején 30% eséllyel történik valami, naponta legfeljebb egy esemény. Hat különböző esemény van:
+### 3. Tests (`test_feature1.py`, `test_feature2.py`)
 
-elhagyott készletek megtalálása,
-egy őr megsérül (életerő csökken),
-vihar (csökken a gyűjtés hatékonysága),
-megromlott étel,
-vándor érkezik (védelmi bónusz a következő éjszakára),
-felderítők térnek vissza (életerő nő, étel fogy, védelmi bónusz).
-3. Tesztek (test_feature1.py, test_feature2.py)
+The features come with `pytest` tests. For example, they check that each difficulty level sets the correct multipliers, and that daytime events never raise errors or leave the food supply negative.
 
-A funkciókhoz pytest tesztek tartoznak, például azt ellenőrzik, hogy a nehézségi szintek a megfelelő szorzókat állítják be, és hogy a nappali események sosem okoznak hibát és nem hagynak negatív étel-készletet.
+## Running the game
 
-Futtatás
+Requirements: Python 3.
 
-Szükséges: Python 3.
-
-bash
+```bash
 python border_tower_game.py
+```
 
-A játék számok beírásával irányítható. A játék végén újra lehet kezdeni.
+The game is controlled by typing numbers. At the end you can start a new game.
 
-Tesztek futtatása
-bash
+### Running the tests
+
+```bash
 pip install pytest
 pytest
-Fájlok
-Fájl	Tartalom
-border_tower_game.py	az alapjáték és a belépési pont
-feature1.py	nehézségi szintek
-feature2.py	véletlenszerű nappali események
-test_feature1.py	a nehézségi szintek tesztjei
-test_feature2.py	a nappali események tesztjei
-Készítő
+```
 
-Cséplő Bálint Gábor – github.com/csepike
+## Author:
+Cséplő Bálint Gábor – [github.com/csepike](https://github.com/csepike)
