@@ -24,7 +24,7 @@ Gyűjtés hatékonysága	×1,2	×1,0	×0,7
 
 Kezdő életerő (játékos / torony)	25 / 25	20 / 22	16 / 18
 
-Kezdő fa és kő	7 és 7	4 és 4	2 és 2
+Kezdő fa és kő	7 	4 	2 
 
 Kezdő étel	6	4	2
 
