@@ -61,4 +61,4 @@ pytest
 ```
 
 ## Author:
-Cséplő Bálint Gábor – [github.com/csepike](https://github.com/csepike)
+Csepike – [github.com/csepike](https://github.com/csepike)
